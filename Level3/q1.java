@@ -1,0 +1,45 @@
+import java.util.Scanner;
+
+public class q1 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.print("Enter a number: ");
+        long number = sc.nextLong();
+
+        long temp = number;
+
+        // Step 1: Count digits
+        int count = 0;
+        while (temp != 0) {
+            count++;
+            temp /= 10;
+        }
+
+        // Step 2: Store digits in array
+        int[] digits = new int[count];
+        temp = number;
+
+        for (int i = count - 1; i >= 0; i--) {
+            digits[i] = (int)(temp % 10);
+            temp /= 10;
+        }
+
+        // Step 3: Frequency array
+        int[] freq = new int[10];
+
+        for (int i = 0; i < digits.length; i++) {
+            freq[digits[i]]++;
+        }
+
+        // Step 4: Display frequency
+        System.out.println("\nDigit Frequencies:");
+        for (int i = 0; i < 10; i++) {
+            if (freq[i] > 0) {
+                System.out.println("Digit " + i + " occurs " + freq[i] + " times");
+            }
+        }
+
+        sc.close();
+    }
+}
